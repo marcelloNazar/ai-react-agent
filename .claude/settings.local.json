@@ -13,7 +13,10 @@
       "Bash(python:*)",
       "WebFetch(domain:platform.openai.com)",
       "WebSearch",
-      "WebFetch(domain:python.langchain.com)"
+      "WebFetch(domain:python.langchain.com)",
+      "Bash(venv\\Scripts\\activate:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs"
     ],
     "deny": [],
     "ask": []
