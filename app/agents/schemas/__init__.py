@@ -1,0 +1,1 @@
+# Arquivo vazio - apenas para tornar schemas um módulo Python
