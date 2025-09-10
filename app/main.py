@@ -1,7 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.agents import route
-from app.agents.schemas.response import HealthResponse
 
 app = FastAPI(
     title="Python AI Agent API",
@@ -17,7 +15,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(route.router)
 
 @app.get("/")
 async def root():
@@ -27,7 +24,7 @@ async def root():
         "status": "running"
     }
 
-@app.get("/health", response_model=HealthResponse)
+@app.get("/health")
 async def health():
     return HealthResponse(status="healthy")
 
