@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir)",
+      "Bash(mkdir:*)",
+      "Bash(venv/Scripts/activate:*)",
+      "Bash(pip install:*)",
+      "Bash(pytest:*)",
+      "WebFetch(domain:testcontainers.com)",
+      "WebFetch(domain:testcontainers-python.readthedocs.io)",
+      "WebFetch(domain:github.com)",
+      "Bash(python test_runner.py:*)",
+      "Bash(python:*)",
+      "WebFetch(domain:platform.openai.com)",
+      "WebSearch",
+      "WebFetch(domain:python.langchain.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
