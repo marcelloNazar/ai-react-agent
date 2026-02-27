@@ -953,22 +953,7 @@ Após implementação, verificar que:
 
 **Para simular criação do zero, delete estes arquivos antes da palestra:**
 
-```bash
-# Deletar toda a pasta agents
-rm -rf app/agents/
 
-# Deletar linha do router em main.py (comentar):
-# app.include_router(route.router)
-
-# Deletar import em main.py (comentar):
-# from app.agents import route
-# from app.agents.schemas.response import HealthResponse
-
-# E usar:
-# from pydantic import BaseModel
-# class HealthResponse(BaseModel):
-#     status: str = "healthy"
-```
 
 **Manter estes arquivos:**
 
@@ -1066,63 +1051,11 @@ ultra-think
 
 ---
 
-## 🗑️ PREPARAÇÃO FINAL - ARQUIVOS PARA DELETAR
-
-### **COMANDOS PARA LIMPEZA PRÉ-APRESENTAÇÃO:**
-
-```bash
-# 1. DELETAR pasta agents (será recriada)
-rm -rf app/agents/
-
-# 2. DELETAR arquivos desnecessários
-rm PLANO_SIMPLES_AGENTS.md
-rm SIMPLIFICACAO_RESUMO.md
-rm README.md
-rm "=4.1.0"
-rm -rf .pytest_cache/ .claude/
-
-# 3. Verificar estrutura final
-ls -la
-```
-
-### **MODIFICAR `app/main.py`:**
-
-**REMOVER estas linhas:**
-
-```python
-from app.agents import route
-from app.agents.schemas.response import HealthResponse
-app.include_router(route.router)
-```
-
-**ADICIONAR no lugar:**
-
 ```python
 from pydantic import BaseModel
 
 class HealthResponse(BaseModel):
     status: str = "healthy"
-```
-
-### **ESTRUTURA FINAL PARA DEMONSTRAÇÃO:**
-
-```bash
-ai-react-agent/
-├── app/
-│   ├── __init__.py
-│   ├── main.py                      # SEM agents (preparado)
-│   └── config/
-│       ├── __init__.py
-│       └── llm.py                   # LLM configurado ✅
-├── tests/
-│   ├── __init__.py
-│   ├── conftest.py                  # Setup completo ✅
-│   └── test_e2e.py                  # APENAS 2 testes básicos ✅
-├── requirements.txt                  # Dependências ✅
-├── pyproject.toml                   # Config projeto ✅
-├── .env                             # Vars ambiente ✅
-├── .gitignore                       # Git ignore ✅
-└── PLANO_DEMONSTRACAO_AO_VIVO.md    # ESTE PLANO ✅
 ```
 
 ### **🎯 VALIDAÇÃO PRÉ-APRESENTAÇÃO:**
@@ -1136,27 +1069,5 @@ curl http://localhost:8000/health  # {"status":"healthy"}
 curl http://localhost:8000/        # {"status":"running"}
 
 # 3. Rodar APENAS os 2 testes básicos
-pytest tests/test_e2e.py -v       # 2 passed
-
-# 4. Verificar estrutura de testes limpa
-ls tests/                          # deve ter: __init__.py, conftest.py, test_e2e.py
-ls tests/test_agent_e2e.py        # should error (não existe ainda)
-
-# 5. Verificar que pasta agents NÃO existe
-ls app/agents/                     # should error (será criada na demo)
-
-# 6. Verificar que main.py NÃO tem imports de agents
-grep "from app.agents" app/main.py # should error (já deve estar limpo)
+    pytest tests/test_e2e.py -v       # 2 passed
 ```
-
-### **📝 CHECKLIST FINAL PRÉ-APRESENTAÇÃO:**
-
-- [ ] Pasta `app/agents/` deletada ✅
-- [ ] `main.py` sem imports de agents ✅
-- [ ] `test_e2e.py` com apenas 2 testes básicos limpos ✅
-- [ ] `test_agent_e2e.py` NÃO existe (será criado na demo) ✅
-- [ ] Aplicação roda e responde endpoints básicos ✅
-- [ ] Apenas 2 testes básicos passam (pytest tests/test_e2e.py) ✅
-- [ ] Estrutura modular limpa pronta para demonstração completa ✅
-
-**AGORA ESTÁ PRONTO PARA DEMONSTRAÇÃO COMPLETA AO VIVO! 🚀**
